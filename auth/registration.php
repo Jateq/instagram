@@ -24,7 +24,7 @@
 
             <p class="auth-text">Have an account?</p>
             <div class="switch">
-                <a href="login.php" class="auth-remove">Login</a> </div>
+                <a href="login.html" class="auth-remove">Login</a> </div>
         </div>
         <div class='block-apps'>
             <a class="auth-get">Get the app.</a>
