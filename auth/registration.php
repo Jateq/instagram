@@ -16,8 +16,8 @@
                 <input type="text" name="email" placeholder="Email">
                 <input type="text" name="username" placeholder="Username">
                 <input type="password" name="password" placeholder="Password">
-
                 <button type="submit" class="auth-button">Register</button>
+                <p id="error"></p>
             </form>
         </div>
         <div class="block-auth">

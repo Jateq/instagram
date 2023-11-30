@@ -90,7 +90,7 @@ input{
     -webkit-user-select: none;
     width: auto;
     transition: 0.3s;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 
 .auth-button:hover{
@@ -113,6 +113,11 @@ input{
 .auth-text{
     color: rgb(115, 115, 115);
     margin-bottom: 10px;
+}
+
+.auth-error{
+    margin: 0;
+    color: rgb(239, 2, 2);
 
 }
 

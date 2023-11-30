@@ -19,9 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $result = mysqli_query($conn, $query);
 
     if ($result) {
-        echo "Registration successful!";
+        $_SESSION["login"]="1";
+        header("location:../main_page/main-page.php");
     } else {
-        echo "Registration failed. Please try again.";
+        include 'registration.php';
+        $error_message = "Incorrect password. Please try again.";
     }
 }
-?>
+
+
+echo "<script>document.getElementById('error').innerHTML = '<p class=\"auth-error\">$error_message</p>';</script>";

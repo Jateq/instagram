@@ -1,5 +1,7 @@
 <?php
 include '../connect.php';
+session_start ();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -17,13 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = mysqli_fetch_assoc($result);
         // Verify the password
         if (password_verify($password, $user['password'])) {
-            // Password is correct, perform login actions
-            echo "Login successful!";
+            $_SESSION["login"]="1";
+            header("location:../main_page/main-page.php");
         } else {
-            echo "Incorrect password. Please try again.";
+            include 'login.html';
+            $error_message = "Incorrect password. Please try again.";
         }
     } else {
-        echo "User not found. Please check your username.";
+        include 'login.html';
+        $error_message = "User not found. Please check your username.";
     }
+
 }
 
+echo "<script>document.getElementById('error').innerHTML = '<p class=\"auth-error\">$error_message</p>';</script>";
