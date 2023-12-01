@@ -51,6 +51,21 @@ body {
     width: 200px;
 }
 
+#uploadedImage{
+    width: 600px;
+    max-height: 600px;
+    margin-top: -100px;
+    margin-left: 0;
+    border-radius: 5px;
+}
+
+#uploadDesc{
+    width: 580px;
+    border-radius: 5px;
+    padding: 15px 10px;
+    background-color: gainsboro;
+}
+
 .upload-container-main p{
     font-size: 18px;
 }

@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verify the password
         if (password_verify($password, $user['password'])) {
             $_SESSION["login"]="1";
+            $_SESSION['username'] = $username;
             header("location:../main_page/main-page.php");
         } else {
             include 'login.html';

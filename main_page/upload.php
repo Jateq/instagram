@@ -160,8 +160,8 @@ if(!isset($_SESSION["login"])) {
         </div>
 
         <div class="upload-container-main">
-            <img src="../images/upload-icons.png" alt="icons">
-            <p>Choose the file</p>
+            <img id="uploadIcons" src="../images/upload-icons.png" alt="icons">
+            <p id="fileChoose">Choose the file</p>
             <button id="selectButton">Select from computer</button>
             <?php if (isset($_GET['error'])): ?>
                 <p><?php echo $_GET['error']; ?></p>
@@ -176,6 +176,8 @@ if(!isset($_SESSION["login"])) {
                        id="fileInput"
                        name="my_image"
                        style="display: none;">
+
+                <img id="uploadedImage" src="#" alt="Uploaded Image" style="display: none;">
 
                 <button type="submit"
                         id="mySubmit"

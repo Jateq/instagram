@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($result) {
         $_SESSION["login"]="1";
+        $_SESSION['username'] = $username;
         header("location:../main_page/main-page.php");
     } else {
         include 'registration.php';
