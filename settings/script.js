@@ -5,21 +5,16 @@ document.getElementById('selectButton').addEventListener('click', function() {
 document.getElementById('fileInput').addEventListener('change', function() {
     let fileInput = this;
     const selectButton = document.getElementById('selectButton');
-    const uploadIcons = document.getElementById('uploadIcons');
+    const uploadedImage = document.getElementById('userImg');
     const fileChoose = document.getElementById('fileChoose');
-    let uploadedImage = document.getElementById('uploadedImage');
     let descriptionInput = document.createElement('input');
-    descriptionInput.type = 'text-area';
-    descriptionInput.name = 'image_description'; // Change the name as needed
-    descriptionInput.placeholder = 'Enter image description';
-    descriptionInput.id = 'uploadDesc'
+
 
     selectButton.style.display = 'none';
-    uploadIcons.style.display = 'none';
     fileChoose.style.display = 'none';
 
     uploadedImage.src = URL.createObjectURL(fileInput.files[0]);
-    uploadedImage.style.display = 'block';
+
 
     // Add the description input before the submit button
     let form = document.getElementById('uploadForm');
@@ -27,6 +22,9 @@ document.getElementById('fileInput').addEventListener('change', function() {
 
     // Show the submit button
     document.getElementById('mySubmit').style.display = 'block';
+    document.getElementById('mySubmit').style.marginLeft = '30px'
+
+
 });
 
 document.getElementById('mySubmit').addEventListener('click', function(event) {
@@ -38,24 +36,3 @@ document.getElementById('mySubmit').addEventListener('click', function(event) {
         event.preventDefault(); // Prevent form submission
     }
 });
-
-
-
-
-function toggleDropdown() {
-    var dropdown = document.querySelector('.dropdown');
-    dropdown.classList.toggle('open');
-}
-
-// Close the dropdown when clicking outside of it
-window.onclick = function(event) {
-    if (!event.target.matches('#more')) {
-        var dropdowns = document.getElementsByClassName("dropdown");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('open')) {
-                openDropdown.classList.remove('open');
-            }
-        }
-    }
-}

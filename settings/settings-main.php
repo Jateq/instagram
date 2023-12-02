@@ -1,5 +1,6 @@
 <?php
 session_start ();
+include '../connect.php';
 if(!isset($_SESSION["login"])) {
     header("location:../auth/login.html");
     exit();
@@ -134,7 +135,8 @@ if(!isset($_SESSION["login"])) {
 
 
     <a href="../profiles/profile-amina.html">
-        <img src="../images/user.png" class="user">
+        <?php include "../userInfo.php";?>
+        <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 
 
@@ -211,8 +213,13 @@ if(!isset($_SESSION["login"])) {
     <div class="right">
         <h1>Edit profile</h1>
         <div class="right-top">
-            <img src="images/user.png" alt="user">
-            <p>pitokina</p>
+            <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user">
+            <div class="photo-user">
+            <p><?php echo $username = $_SESSION['username'];?> </p>
+            <a href="./upload_user_photo.php" class="photo-change"> Change the photo</a>
+            </div>
+
+
         </div>
 
         <div class="right-web">

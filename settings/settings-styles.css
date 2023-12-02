@@ -47,6 +47,7 @@
 
 .user{
     width: 24px;
+    height: 24px;
     border-radius: 12px;
 }
 
@@ -157,10 +158,10 @@ main{
 }
 
 .right img{
-    margin-left: 70px;
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
+    margin-left: 60px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
 }
 
 .right-bio{
@@ -263,6 +264,22 @@ button:hover{
     color: red;
     text-decoration: none;
 
+}
+
+.photo-change{
+    font-size: 12px;
+    color: #0095f6;
+    cursor: pointer;
+    margin-top: 8px;
+    gap: 0;
+}
+.photo-user{
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-user p{
+    margin: 0;
 }
 
 .logout a{

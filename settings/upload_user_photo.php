@@ -4,8 +4,7 @@ include "../connect.php";
 if(!isset($_SESSION["login"])) {
     header("location:../auth/login.html");
     exit();
-}
-?>
+}?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +12,7 @@ if(!isset($_SESSION["login"])) {
     <meta charset="UTF-8">
     <title>Instagram</title>
     <link rel="icon" href="../instagram.ico">
-    <link rel="stylesheet" href="main-styles.css">
+    <link rel="stylesheet" href="../main_page/main-styles.css">
     <script src = "script.js" defer></script>
 
 </head>
@@ -137,7 +136,7 @@ if(!isset($_SESSION["login"])) {
 
     <a href="../profiles/profile-amina.html">
         <?php include "../userInfo.php";?>
-        <img src="../images/users/<?php echo $userImage ?>" alt="user" class="user">
+        <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 
 
@@ -158,12 +157,14 @@ if(!isset($_SESSION["login"])) {
 
     <div class="upload-container">
         <div class="upload-container-top">
-            <p>Create new post</p>
+            <p>Change image</p>
             <a href="../main_page/main-page.php"><svg aria-label="Close" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0,0,0)" height="20" role="img" viewBox="0 0 24 24" width="24"><title>Close</title><polyline fill="black" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg></a>
         </div>
-
         <div class="upload-container-main">
-            <img id="uploadIcons" src="../images/upload-icons.png" alt="icons">
+            <img id="userImg" src="../images/users/<?php echo $sessionUserImage ?>" alt="icons">
+
+
+
             <p id="fileChoose">Choose the file</p>
             <button id="selectButton">Select from computer</button>
             <?php if (isset($_GET['error'])): ?>
@@ -171,7 +172,7 @@ if(!isset($_SESSION["login"])) {
             <?php endif ?>
 
             <form id="uploadForm"
-                  action="upload_process.php"
+                  action="upload_user_photo_process.php"
                   method="post"
                   enctype="multipart/form-data">
 
@@ -187,6 +188,10 @@ if(!isset($_SESSION["login"])) {
                         name="submit"
                         style="display: none;"
                         value="Upload">Submit</button>
+                <?php if ($sessionUserImage !== 'default.png'): ?>
+
+                    <button id="deleteButton">Delete Image</button>
+                <?php endif; ?>
             </form>
         </div>
 
@@ -194,6 +199,34 @@ if(!isset($_SESSION["login"])) {
 
     </div>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteButton = document.getElementById('deleteButton');
+
+        deleteButton.addEventListener('click', function() {
+            const confirmDelete = confirm('Are you sure you want to delete your profile image?');
+
+            if (confirmDelete) {
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'delete_user_photo.php', true);
+
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        if (xhr.responseText.trim() === 'success') {
+                        } else {
+
+                        }
+                    }
+                };
+
+                xhr.send();
+            }
+        });
+    });
+</script>
+
+
 
 </body>
 </html>

@@ -1,4 +1,5 @@
 <?php
+
 session_start ();
 if(!isset($_SESSION["login"])) {
     header("location:../auth/login.html");
@@ -13,6 +14,8 @@ if(!isset($_SESSION["login"])) {
     <title>Instagram</title>
     <link rel="icon" href="../instagram.ico">
     <link rel="stylesheet" href="main-styles.css">
+    <script src = "script.js" defer></script>
+
 </head>
 <body>
 <nav class="navbar">
@@ -126,14 +129,15 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="upload.php">
+    <a href="../main_page/upload.php">
         <svg aria-label="New post" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>New post</title><path d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="6.545" x2="17.455" y1="12.001" y2="12.001"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12.003" x2="12.003" y1="6.545" y2="17.455"></line></svg>
     </a>
 
 
 
     <a href="../profiles/profile-amina.html">
-        <img src="../images/user.png" class="user">
+        <?php include "../userInfo.php";?>
+        <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 
 
@@ -148,6 +152,7 @@ if(!isset($_SESSION["login"])) {
     </a>
 
 </nav>
+
 
 <main>
     <div class="scroll">
@@ -212,21 +217,27 @@ if(!isset($_SESSION["login"])) {
                 $sql = "SELECT * FROM posts ORDER BY id DESC";
                 $res = mysqli_query($conn,  $sql);
 
+
                 if (mysqli_num_rows($res) > 0) {
-                    while ($post = mysqli_fetch_assoc($res)) {  ?>
+                    while ($post = mysqli_fetch_assoc($res)) {
+                        $userNickname = $post['user'];
+                        $userImage = user_image($userNickname, $conn);?>
 
                         <div class="post-container">
                             <div class="post-top">
                                 <div>
-                                    <img src="../images/main-post0-circle.png" alt="circle">
+                                    <img src="../images/users/<?php echo $userImage ?>" alt="circle">
                                     <div class="post-top-info">
                                         <p><?php echo $post['user']; ?></p>
                                         <p><span class="x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj" dir="auto" style="line-height: var(--base-line-clamp-line-height); --base-line-clamp-line-height: 18px;">• <?php echo $post['created_at']; ?></span></p>
                                     </div>
                                 </div>
                                 <div>
-                                    <svg aria-label="More options" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
+                                    <svg id="more" aria-label="More options" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
                                 </div>
+                            
+
+
                             </div>
 
                             <img src="uploads/<?php echo $post['image_url']; ?>">

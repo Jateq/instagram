@@ -10,7 +10,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_POST['image
     $description = mysqli_real_escape_string($conn, $_POST['image_description']);
 
     if ($error === 0) {
-        if ($img_size > 325000) {
+        if ($img_size > 525000) {
             $em = "Sorry, your file is too large.";
             header("Location: ../main_page/upload.php?error=$em");
             exit();
@@ -22,16 +22,17 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_POST['image
 
             if (in_array($img_ex_lc, $allowed_exs)) {
                 $currentDateTime = date("Y-m-d H:i:s");
-                $username = $_SESSION['username'];
+                $userName = $_SESSION['username'];
                 $new_img_name = uniqid("IMG-", true) . '.' . $img_ex_lc;
                 $img_upload_path = 'uploads/' . $new_img_name;
                 move_uploaded_file($tmp_name, $img_upload_path);
 
                 // Insert into Database
-                $sql = "INSERT INTO posts(image_url, created_at, user, description)
-				        VALUES('$new_img_name', '$currentDateTime', '$username', '$description')";
+                include '../userInfo.php';
+                $sql = "INSERT INTO posts(image_url, created_at, user, description, user_image)
+				        VALUES('$new_img_name', '$currentDateTime', '$userName', '$description', '$userImage')";
                 mysqli_query($conn, $sql);
-                header("Location:view.php");
+                header("Location:../main_page/main-page.php");
                 exit();
             } else {
                 $em = "You can't upload files of this type";
