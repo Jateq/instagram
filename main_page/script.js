@@ -59,3 +59,42 @@ window.onclick = function(event) {
         }
     }
 }
+
+function likePost(button) {
+    var postId = button.getAttribute('data-post-id');
+
+    // Check if the button has a certain class to determine the current state
+    var isLiked = button.getAttribute('data-liked') === 'true';
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'like_handler.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if (isLiked) {
+                button.classList.remove('liked');
+            } else {
+                button.classList.add('liked');
+            }
+        }
+    };
+
+    // Send the appropriate action based on the current state
+    var action = isLiked ? 'unlike' : 'like';
+    xhr.send('action=' + action + '&post_id=' + postId);
+}
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const commentInput = document.getElementById('comment');
+    const addCommentForm = document.getElementById('addCommentForm');
+
+    commentInput.addEventListener('keydown', function (event) {
+        // Check if the pressed key is "Enter"
+        if (event.key === 'Enter') {
+            event.preventDefault();
+
+            addCommentForm.submit();
+        }
+    });
+});

@@ -1,4 +1,26 @@
 <?php
+include "../connect.php";
+// Check if post_id is provided in the URL
+if (isset($_GET['post_id'])) {
+    $postId = $_GET['post_id'];
+
+    // Fetch post details from the database
+    $postQuery = "SELECT * FROM posts WHERE id = $postId";
+    $postResult = mysqli_query($conn, $postQuery);
+
+    if ($postResult && mysqli_num_rows($postResult) > 0) {
+        $post = mysqli_fetch_assoc($postResult);
+        $postUser = $post['user'];
+        $postCreatedAt = $post['created_at'];
+        $postImageUrl = $post['image_url'];
+        $postDescription = $post['description'];
+        $postLikes = $post['likes'];
+    }
+}
+?>
+
+
+<?php
 session_start ();
 include "../connect.php";
 if(!isset($_SESSION["login"])) {
@@ -32,16 +54,16 @@ if(!isset($_SESSION["login"])) {
 
     <a href="../main_page/main-page.php">
         <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                    d="M2.45307 11.751L11.9773 2.02175L21.5015 11.751C21.7906 12.0463 21.9545 12.4468 21.9545 12.8711V20.4556C21.9545 20.7747 21.7037 21 21.4427 21H15.964C15.713 21 15.4721 20.7849 15.4721 20.476V15.8886C15.4721 13.9497 13.9267 12.34 11.9773 12.34C10.0279 12.34 8.48244 13.9497 8.48244 15.8886V20.476C8.48244 20.7849 8.24157 21 7.99053 21H2.51187C2.25085 21 2 20.7747 2 20.4556V12.8711C2 12.4468 2.16397 12.0463 2.45307 11.751Z"
-                    stroke="black"
-                    stroke-width="2"
+                d="M2.45307 11.751L11.9773 2.02175L21.5015 11.751C21.7906 12.0463 21.9545 12.4468 21.9545 12.8711V20.4556C21.9545 20.7747 21.7037 21 21.4427 21H15.964C15.713 21 15.4721 20.7849 15.4721 20.476V15.8886C15.4721 13.9497 13.9267 12.34 11.9773 12.34C10.0279 12.34 8.48244 13.9497 8.48244 15.8886V20.476C8.48244 20.7849 8.24157 21 7.99053 21H2.51187C2.25085 21 2 20.7747 2 20.4556V12.8711C2 12.4468 2.16397 12.0463 2.45307 11.751Z"
+                stroke="black"
+                stroke-width="2"
             />
         </svg>
     </a>
@@ -50,20 +72,20 @@ if(!isset($_SESSION["login"])) {
 
     <a href="#" >
         <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M21.669 21.6543C21.8625 21.4622 21.863 21.1494 21.6703 20.9566L17.3049 16.5913C18.7912 14.9327 19.7017 12.7525 19.7017 10.3508C19.7017 5.18819 15.5135 1 10.3508 1C5.18819 1 1 5.18819 1 10.3508C1 15.5135 5.18819 19.7017 10.3508 19.7017C12.7624 19.7017 14.9475 18.7813 16.606 17.2852L20.9739 21.653C21.1657 21.8449 21.4765 21.8454 21.669 21.6543ZM1.9843 10.3508C1.9843 5.7394 5.7394 1.9843 10.3508 1.9843C14.9623 1.9843 18.7174 5.7394 18.7174 10.3508C18.7174 14.9623 14.9623 18.7174 10.3508 18.7174C5.7394 18.7174 1.9843 14.9623 1.9843 10.3508Z"
-                    fill="var(--text-dark)"
-                    stroke="black"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M21.669 21.6543C21.8625 21.4622 21.863 21.1494 21.6703 20.9566L17.3049 16.5913C18.7912 14.9327 19.7017 12.7525 19.7017 10.3508C19.7017 5.18819 15.5135 1 10.3508 1C5.18819 1 1 5.18819 1 10.3508C1 15.5135 5.18819 19.7017 10.3508 19.7017C12.7624 19.7017 14.9475 18.7813 16.606 17.2852L20.9739 21.653C21.1657 21.8449 21.4765 21.8454 21.669 21.6543ZM1.9843 10.3508C1.9843 5.7394 5.7394 1.9843 10.3508 1.9843C14.9623 1.9843 18.7174 5.7394 18.7174 10.3508C18.7174 14.9623 14.9623 18.7174 10.3508 18.7174C5.7394 18.7174 1.9843 14.9623 1.9843 10.3508Z"
+                fill="var(--text-dark)"
+                stroke="black"
+                stroke-linecap="round"
+                stroke-linejoin="round"
             />
         </svg>
     </a>
@@ -78,39 +100,39 @@ if(!isset($_SESSION["login"])) {
 
     <a href="../reels/reels.html" >
         <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
         >
             <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M18 2.8H7C5.23269 2.8 3.8 4.23269 3.8 6V17C3.8 18.7673 5.23269 20.2 7 20.2H18C19.7673 20.2 21.2 18.7673 21.2 17V6C21.2 4.23269 19.7673 2.8 18 2.8ZM7 1C4.23858 1 2 3.23858 2 6V17C2 19.7614 4.23858 22 7 22H18C20.7614 22 23 19.7614 23 17V6C23 3.23858 20.7614 1 18 1H7Z"
-                    fill="black"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M18 2.8H7C5.23269 2.8 3.8 4.23269 3.8 6V17C3.8 18.7673 5.23269 20.2 7 20.2H18C19.7673 20.2 21.2 18.7673 21.2 17V6C21.2 4.23269 19.7673 2.8 18 2.8ZM7 1C4.23858 1 2 3.23858 2 6V17C2 19.7614 4.23858 22 7 22H18C20.7614 22 23 19.7614 23 17V6C23 3.23858 20.7614 1 18 1H7Z"
+                fill="black"
             />
             <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M22 7.99995H3V6.19995H22V7.99995Z"
-                    fill="black"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M22 7.99995H3V6.19995H22V7.99995Z"
+                fill="black"
             />
             <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M10 6.99989L6 1.99989L7.57349 1.12573L11.5735 6.12573L10 6.99989Z"
-                    fill="black"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 6.99989L6 1.99989L7.57349 1.12573L11.5735 6.12573L10 6.99989Z"
+                fill="black"
             />
             <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M16.5 6.99989L12.5 1.99989L14.0735 1.12573L18.0735 6.12573L16.5 6.99989Z"
-                    fill="black"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M16.5 6.99989L12.5 1.99989L14.0735 1.12573L18.0735 6.12573L16.5 6.99989Z"
+                fill="black"
             />
             <path
-                    d="M15.75 13.0671C16.0833 13.2595 16.0833 13.7407 15.75 13.9331L10.5 16.9642C10.1667 17.1566 9.75 16.9161 9.75 16.5312L9.75 10.469C9.75 10.0841 10.1667 9.84354 10.5 10.036L15.75 13.0671Z"
-                    fill="black"
+                d="M15.75 13.0671C16.0833 13.2595 16.0833 13.7407 15.75 13.9331L10.5 16.9642C10.1667 17.1566 9.75 16.9161 9.75 16.5312L9.75 10.469C9.75 10.0841 10.1667 9.84354 10.5 10.036L15.75 13.0671Z"
+                fill="black"
             />
         </svg>
     </a>
@@ -153,46 +175,69 @@ if(!isset($_SESSION["login"])) {
 
 </nav>
 
-<main >
+<div >
 
-    <div class="upload-container">
-        <div class="upload-container-top">
-            <p>Create new post</p>
+    <div class="post-page-container">
+        <div class="post-page-container-top">
             <a href="../main_page/main-page.php"><svg aria-label="Close" class="x1lliihq x1n2onr6" color="rgb(0,0,0)" fill="rgb(0,0,0)" height="20" role="img" viewBox="0 0 24 24" width="24"><title>Close</title><polyline fill="black" points="20.643 3.357 12 12 3.353 20.647" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" x1="20.649" x2="3.354" y1="20.649" y2="3.354"></line></svg></a>
         </div>
 
-        <div class="upload-container-main">
-            <img id="uploadIcons" src="../images/upload-icons.png" alt="icons">
-            <p id="fileChoose">Choose the file</p>
-            <button id="selectButton">Select from computer</button>
-            <?php if (isset($_GET['error'])): ?>
-                <p><?php echo $_GET['error']; ?></p>
-            <?php endif ?>
-
-            <form id="uploadForm"
-                  action="upload_process.php"
-                  method="post"
-                  enctype="multipart/form-data">
-
-                <input type="file"
-                       id="fileInput"
-                       name="my_image"
-                       style="display: none;">
-
-                <img id="uploadedImage" src="#" alt="Uploaded Image" style="display: none;">
-
-                <button type="submit"
-                        id="mySubmit"
-                        name="submit"
-                        style="display: none;"
-                        value="Upload">Submit</button>
-            </form>
+        <div class="post-page-container-main">
+            <img src="uploads/<?php echo $postImageUrl; ?>">
         </div>
+
+        <div class="post-page-info">
+            <?php
+            $postMainUserCircle = user_image($postUser, $conn);
+            ?>
+            <div class="post-page-info-user">
+                <div>
+                    <img src="../images/users/<?php echo $postMainUserCircle ?>" alt="user">
+                    <p> <?php echo $postUser ?></p>
+                </div>
+                <p class="created-at"> <?php echo $postCreatedAt?> </p>
+            </div>
+            <div class="post-page-comments">
+                <div>
+                    <img src="../images/users/<?php echo $postMainUserCircle ?>" alt="user">
+                    <span> <?php echo $postUser?></span>
+                    <p> <?php echo $postDescription?></p>
+                </div>
+                <?php
+                $commentsQuery = "SELECT * FROM comments WHERE post_id = $postId ORDER BY created_at DESC";
+                $commentsResult = mysqli_query($conn, $commentsQuery);
+
+                while ($comment = mysqli_fetch_assoc($commentsResult)) {
+                    $commentImage = user_image($comment['user'], $conn);
+                    $time = timeAgo($comment['comment']);
+                ?>
+
+                    <div>
+                        <img src="../images/users/<?php echo $commentImage ?>" alt="user" class="user">
+                        <div class="timestamp">
+                            <p> <span> <?php echo $comment['user'] ?> </span> <?php echo $comment['comment']?> </p>
+
+                        </div>
+                    </div>
+                <?php } ?>
+
+            </div>
+            <div class="post-page-comments-add">
+                <form id="addCommentForm" action="add_comment.php" method="post">
+                    <input id="comment" name="comment" required placeholder="Add a comment...">
+                    <input type="hidden" id="postId" name="post_id" value="<?php echo $postId; ?>">
+                </form>
+            </div>
+        </div>
+
+
 
 
 
     </div>
-</main>
+</div>
 
 </body>
 </html>
+
+
