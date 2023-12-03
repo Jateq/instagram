@@ -1,6 +1,6 @@
 # Instagram
 
-Full-Stack web application using PHP, HTML/CSS, MySQL
+Full-Stack web application using PHP, JS, HTML/CSS, MySQL
 
 
 ### Endterm project 
