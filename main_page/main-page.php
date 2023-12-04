@@ -135,8 +135,8 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="../profiles/profile-amina.html">
-        <?php include "../userInfo.php";?>
+    <?php include "../userInfo.php"; ?>
+    <a href="../profiles/profile.php?user=<?php echo $currenUser?>">
         <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 
@@ -152,6 +152,8 @@ if(!isset($_SESSION["login"])) {
     </a>
 
 </nav>
+
+
 
 
 <main>
@@ -235,6 +237,7 @@ if(!isset($_SESSION["login"])) {
 
                         <div class="post-container">
                             <div class="post-top">
+                                <a href="../profiles/profile.php?user=<?php echo $userNickname ?>">
                                 <div>
                                     <img src="../images/users/<?php echo $userImage ?>" alt="circle">
                                     <div class="post-top-info">
@@ -242,6 +245,7 @@ if(!isset($_SESSION["login"])) {
                                         <p><span class="x1lliihq x1plvlek xryxfnj x1n2onr6 x193iq5w xeuugli x1fj9vlw x13faqbe x1vvkbs x1s928wv xhkezso x1gmr53x x1cpjm7i x1fgarty x1943h6x x1i0vuye xvs91rp xo1l8bm x1roi4f4 x10wh9bi x1wdrske x8viiok x18hxmgj" dir="auto" style="line-height: var(--base-line-clamp-line-height); --base-line-clamp-line-height: 18px;">• <?php echo $post['created_at']; ?></span></p>
                                     </div>
                                 </div>
+                                </a>
                                 <div>
                                     <svg id="more" aria-label="More options" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>More options</title><circle cx="12" cy="12" r="1.5"></circle><circle cx="6" cy="12" r="1.5"></circle><circle cx="18" cy="12" r="1.5"></circle></svg>
                                 </div>

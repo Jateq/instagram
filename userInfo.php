@@ -1,5 +1,6 @@
 <?php
 include "connect.php";
+
 function user_image($userNickname, $conn)
 {
     $sql = "SELECT * FROM users WHERE nickname = '$userNickname'";

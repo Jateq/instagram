@@ -135,8 +135,8 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="../profiles/profile-amina.html">
-        <?php include "../userInfo.php";?>
+    <?php include "../userInfo.php"; ?>
+    <a href="../profiles/profile.php?user=<?php echo $currenUser?>">
         <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 

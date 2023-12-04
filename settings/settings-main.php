@@ -134,8 +134,8 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="../profiles/profile-amina.html">
-        <?php include "../userInfo.php";?>
+    <?php include "../userInfo.php"; ?>
+    <a href="../profiles/profile.php?user=<?php echo $currenUser?>">
         <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
     </a>
 
@@ -213,55 +213,84 @@ if(!isset($_SESSION["login"])) {
     <div class="right">
         <h1>Edit profile</h1>
         <div class="right-top">
+            <a href="../profiles/profile.php?user=<?php echo $userName = $_SESSION['username']; ?>">
             <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user">
-            <div class="photo-user">
-            <p><?php echo $username = $_SESSION['username'];?> </p>
+            </a>
+                <div class="photo-user">
+
+            <p><?php echo $userName?> </p>
             <a href="./upload_user_photo.php" class="photo-change"> Change the photo</a>
             </div>
 
 
         </div>
+        <?php
+
+
+        // Retrieve user information
+        $userInfoQuery = "SELECT user_id, email, user_image, bio, gender, followers, following FROM users WHERE nickname = ?";
+        $stmt = mysqli_prepare($conn, $userInfoQuery);
+        mysqli_stmt_bind_param($stmt, "s", $userName);
+        mysqli_stmt_execute($stmt);
+        $userResult = mysqli_stmt_get_result($stmt);
+
+        if ($userResult && mysqli_num_rows($userResult) > 0) {
+            $user = mysqli_fetch_assoc($userResult);
+            $userId = $user['user_id'];
+            $email = $user['email'];
+            $userBio = $user['bio'];
+            $userGender = $user['gender'];
+
+
+
+        } else {
+            // User not found
+            echo "User not found";
+        }
+        ?>
+
+        <form action="update_bio.php" method="post">
+
 
         <div class="right-web">
-            <p style="font-weight: bold">Website</p>
+            <p style="font-weight: bold">Email</p>
             <div class="website">
-                <label><input  type="text" disabled placeholder="Website"></label>
-                <p>Editing your links is only available on mobile. Visit the Instagram app and edit your profile to change the websites in your bio.</p>
+                <label><input  type="text" name="email" disabled placeholder="<?php echo $email?>"></label>
+                <p>Editing your links is unavailable. Read the instagram policies, searching and storing is based on this link</p>
             </div>
         </div>
 
-        <div class="right-bio">
-            <p style="font-weight: bold">Bio</p>
-            <div class="bio">
-                <label><input type="text" value="Amina"></label>
-                <p>max 150 words</p>
-            </div>
-        </div>
 
-        <div class="right-gender">
-            <p style="font-weight: bold">Gender</p>
-            <div class="gender">
-                <label><input type="text" value="Female"></label>
-                <p>This won't be part of your public profile.</p>
-            </div>
-        </div>
-
-        <div class="right-show">
-            <p style="font-weight: bold">Show account suggestions on profiles</p>
-            <div class="show">
-                <label for="myCheckbox">
-                </label>
-                <input type="checkbox" id="myCheckbox" name="myCheckbox"><span>Choose whether people can see similar account suggestions on your profile, and whether your account can be suggested on other profiles. </span>
-
-
+            <div class="right-bio">
+                <p style="font-weight: bold">Bio</p>
+                <div class="bio">
+                    <label><input type="text" name="userBio" value="<?php echo $userBio; ?>"></label>
+                    <p>max 150 words</p>
+                </div>
             </div>
 
-        </div>
-        <div>
-            <button>
-                Submit
-            </button>
-        </div>
+            <div class="right-gender">
+                <p style="font-weight: bold">Gender</p>
+                <div class="gender">
+                    <label><input type="text" name="gender" value="<?php echo $userGender?>"></label>
+
+                </div>
+            </div>
+
+            <div class="right-show">
+                <p style="font-weight: bold">Show account suggestions on profiles</p>
+                <div class="show">
+                    <label for="myCheckbox"></label>
+                    <input type="checkbox" id="myCheckbox" name="showSuggestions">
+                    <span>Choose whether people can see similar account suggestions on your profile, and whether your account can be suggested on other profiles.</span>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
 
 
     </div>
