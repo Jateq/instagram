@@ -191,16 +191,14 @@ if(!isset($_SESSION["login"])) {
             $postMainUserCircle = user_image($postUser, $conn);
             ?>
             <div class="post-page-info-user">
-                <div>
+                <div >
                     <img src="../images/users/<?php echo $postMainUserCircle ?>" alt="user">
                     <p> <?php echo $postUser ?></p>
                 </div>
                 <p class="created-at"> <?php echo $postCreatedAt?> </p>
             </div>
             <div class="post-page-comments">
-                <div>
-                    <img src="../images/users/<?php echo $postMainUserCircle ?>" alt="user">
-                    <span> <?php echo $postUser?></span>
+                <div style="padding-bottom: 12px; padding-left: 13px; border-bottom: solid 1px rgb(232, 232, 232);">
                     <p> <?php echo $postDescription?></p>
                 </div>
                 <?php
