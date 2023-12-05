@@ -186,6 +186,7 @@ if(!isset($_SESSION["login"])) {
         <div class="post-page-info">
             <?php
             $postMainUserCircle = user_image($postUser, $conn);
+            $postMainUserCircle = str_replace("'", '', $postMainUserCircle);
             ?>
             <div class="post-page-info-user">
                 <div >

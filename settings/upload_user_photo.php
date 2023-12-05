@@ -136,7 +136,7 @@ if(!isset($_SESSION["login"])) {
 
     <?php include "../userInfo.php"; ?>
     <a href="../profile/profile.php?user=<?php echo $currenUser?>">
-        <img src="../images/users/<?php echo $sessionUserImage ?>" alt="user" class="user">
+        <img src="../images/users/<?php echo $sessionUserImage?>" alt="user" class="user">
     </a>
 
 

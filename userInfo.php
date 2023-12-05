@@ -61,6 +61,22 @@ function user_image($userNickname, $conn)
     return 'default_image.jpg';
 }
 
+function user_bio($userNickname, $conn)
+{
+    $sql = "SELECT * FROM users WHERE nickname = '$userNickname'";
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        if (mysqli_num_rows($result) > 0) {
+            $userData = mysqli_fetch_assoc($result);
+            return $userData['bio'];
+        }
+    }
+
+    return 'no bio';
+}
+
+
 
 function timeAgo($timestamp) {
     $currentTime = strtotime(date("Y-m-d H:i:s"));
@@ -89,3 +105,4 @@ function timeAgo($timestamp) {
 
 $currenUser = $_SESSION['username'];
 $sessionUserImage = user_image($_SESSION['username'], $conn);
+$sessionUserImage = str_replace("'", '', $sessionUserImage);

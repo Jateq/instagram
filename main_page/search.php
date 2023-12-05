@@ -1,13 +1,13 @@
 <?php
 session_start ();
-include "../connect.php";
+include '../connect.php';
 if(!isset($_SESSION["login"])) {
     header("location:../auth/login.html");
     exit();
 }
 ?>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -15,7 +15,6 @@ if(!isset($_SESSION["login"])) {
         <link rel="icon" href="../instagram.ico">
         <link rel="stylesheet" href="main-styles.css">
         <script src = "script.js" defer></script>
-
     </head>
     <body class="upload-page">
     <nav class="navbar">
@@ -48,9 +47,8 @@ if(!isset($_SESSION["login"])) {
 
 
 
-        <a href="search.php" >
-
-        <svg
+        <a href="#" >
+            <svg
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
@@ -123,10 +121,6 @@ if(!isset($_SESSION["login"])) {
         </a>
 
 
-
-
-
-
         <a href="../main_page/upload.php">
             <svg aria-label="New post" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>New post</title><path d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="6.545" x2="17.455" y1="12.001" y2="12.001"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="12.003" x2="12.003" y1="6.545" y2="17.455"></line></svg>
         </a>
@@ -153,33 +147,58 @@ if(!isset($_SESSION["login"])) {
 
     <main >
 
-        <div class="upload-container">
-            <div class="search-bar">
-                <input name="search" id="searchInput" placeholder="Search">
-            </div>
-            <div id="userList">
-                <?php
-                $allUsers = getAllUsers($conn);
-                foreach ($allUsers as $userNickname) { ?>
-                    <a href="../profile/profile.php?user=<?php echo $userNickname ?>">  <?php echo $userNickname ?></a>
-                <?php } ?>
-            </div>
+    <div class="upload-container">
+    <div class="search-bar">
+        <input name="search" id="searchInput" placeholder="Search">
+        <div class="clear-button" onclick="clearSearch()">✕</div>
+    </div>
+        <div id="userList" class="userList">
+            <?php
+            $allUsers = getAllUsers($conn);
+            foreach ($allUsers as $userNickname) {
+                $userImage = user_image($userNickname, $conn);
+                $bio = user_bio($userNickname, $conn);
+                echo '<a href="../profile/profile.php?user=' . $userNickname . '">';
+
+                echo '<div class="user-line">';
+                echo '<div class="avatar"><img src="../images/users/' . $userImage . '"></div>';
+                echo '<div class="user-details">';
+                echo '<p><strong>' . $userNickname . '</strong></p>';
+                echo '<p>' . $bio . '</p>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
+            }
+            ?>
         </div>
+</div>
 
-    </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var searchInput = document.getElementById("searchInput");
 
-    </body>
+        searchInput.addEventListener("input", function () {
+            var searchTerm = searchInput.value.toLowerCase();
+            var userLines = document.querySelectorAll("#userList .user-line");
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#searchInput").on("input", function () {
-                var searchTerm = $(this).val().toLowerCase();
-                $("#userList a").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(searchTerm) > -1);
-                });
+            userLines.forEach(function (userLine) {
+                var userText = userLine.textContent.toLowerCase();
+                var isMatch = userText.includes(searchTerm);
+                userLine.style.display = isMatch ? "flex" : "none";
             });
         });
-    </script>
+    });
+
+    function clearSearch() {
+        var searchInput = document.getElementById("searchInput");
+        searchInput.value = '';
+
+        var userLines = document.querySelectorAll("#userList .user-line");
+        userLines.forEach(function (userLine) {
+            userLine.style.display = "flex";
+        });
+    }
+</script>
+
     </html>
 <?php

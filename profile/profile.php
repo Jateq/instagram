@@ -21,6 +21,7 @@ if (isset($_GET['user'])) {
         $user = mysqli_fetch_assoc($userResult);
         $email = $user['email'];
         $userImage = $user['user_image'];
+        $userImage = str_replace("'", '', $userImage);
         $userBio = $user['bio'];
         $userFollowers = $user['followers'];
         $userFollowing = $user['following'];

@@ -10,7 +10,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_POST['image
     $description = mysqli_real_escape_string($conn, $_POST['image_description']);
 
     if ($error === 0) {
-        if ($img_size > 525000) {
+        if ($img_size > 4525000) {
             $em = "Sorry, your file is too large.";
             header("Location: ../main_page/upload.php?error=$em");
             exit();
@@ -18,7 +18,7 @@ if (isset($_POST['submit']) && isset($_FILES['my_image']) && isset($_POST['image
             $img_ex = pathinfo($img_name, PATHINFO_EXTENSION);
             $img_ex_lc = strtolower($img_ex);
 
-            $allowed_exs = array("jpg", "jpeg", "png");
+            $allowed_exs = array("jpg", "jpeg", "png", "heic", "webp");
 
             if (in_array($img_ex_lc, $allowed_exs)) {
                 $currentDateTime = date("Y-m-d H:i:s");
