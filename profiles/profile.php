@@ -236,10 +236,15 @@ if (isset($_GET['user'])) {
             <div class="profile-info">
                 <div class="profile-title mb-1rem">
                     <h2><?php echo $userName?></h2>
-                    <a href="../settings/settings-main.php"> <button class="edit"> Edit profile </button></a>
-
+                    <?php
+                    if ($userName == $currenUser) {
+                        echo '<a href="../settings/settings-main.php"><button class="edit">Edit profile</button></a>';
+                    } else {
+                        echo '<button class="edit" >Follow</button>';
+                    }
+                    ?>
                 </div>
-                <!-- Profile Stats -->
+                    <!-- Profile Stats -->
                 <ul class="profile-numbers mb-1rem">
                     <li>
                         <a href="#">

@@ -1,6 +1,36 @@
 <?php
 include "connect.php";
 
+function getUserNickname($conn, $userId) {
+    $sql = "SELECT nickname FROM users WHERE user_id = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $userData = mysqli_fetch_assoc($result);
+        return $userData['nickname'];
+    }
+
+    return null; // User not found
+}
+
+function getUserId($conn, $userNickname) {
+    $sql = "SELECT user_id FROM users WHERE nickname = ?";
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $userNickname);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $userData = mysqli_fetch_assoc($result);
+        return $userData['user_id'];
+    }
+
+    return null; // User not found
+}
+
 function user_image($userNickname, $conn)
 {
     $sql = "SELECT * FROM users WHERE nickname = '$userNickname'";
