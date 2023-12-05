@@ -1,27 +1,32 @@
 function showPopup() {
     var overlay = document.getElementById("overlay");
     var popup = document.getElementById("popup");
-    
+
     overlay.style.display = "block";
     popup.style.display = "block";
-            
-    setTimeout(function() {
+
+    setTimeout(function () {
         overlay.style.opacity = "1";
         popup.style.opacity = "1";
     }, 50);
 }
-            
+
 function hidePopup() {
     var overlay = document.getElementById("overlay");
     var popup = document.getElementById("popup");
-          
+
     overlay.style.opacity = "0";
     popup.style.opacity = "0";
-            
-    setTimeout(function() {
-    overlay.style.display = "none";
-    popup.style.display = "none";
+
+    setTimeout(function () {
+        overlay.style.display = "none";
+        popup.style.display = "none";
     }, 300);
+}
+
+// Добавляем функцию для возврата на главную страницу при клике на overlay
+function returnToHomePage() {
+    window.location.href = window.location.href;
 }
 
 function showFollowers() {
@@ -38,4 +43,12 @@ function hidePopup() {
     document.getElementById('overlay').style.display = 'none';
 }
 
+$(document).ready(function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var activeTab = urlParams.get('activeTab');
 
+    // Если параметр activeTab равен "saved", делаем вкладку "Saved" активной
+    if (activeTab === 'saved') {
+      $(".tab-item.saved").addClass("active");
+    }
+});

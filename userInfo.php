@@ -1,6 +1,21 @@
 <?php
 include "connect.php";
 
+
+function getAllUsers($conn) {
+    $sql = "SELECT nickname FROM users";
+    $result = mysqli_query($conn, $sql);
+
+    $userList = [];
+
+    if ($result) {
+        while ($userData = mysqli_fetch_assoc($result)) {
+            $userList[] = $userData['nickname'];
+        }
+    }
+
+    return $userList;
+}
 function getUserNickname($conn, $userId) {
     $sql = "SELECT nickname FROM users WHERE user_id = ?";
     $stmt = mysqli_prepare($conn, $sql);

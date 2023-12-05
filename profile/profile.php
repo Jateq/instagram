@@ -85,11 +85,11 @@ if (isset($_GET['user'])) {
               />
           </svg>
       </a>
-  
-  
-  
-      <a href="#" >
-          <svg
+
+
+
+        <a href="../main_page/search.php" >
+        <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
@@ -161,12 +161,7 @@ if (isset($_GET['user'])) {
           <svg aria-label="Messenger" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Messenger</title><path d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.739"></path><path d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z" fill-rule="evenodd"></path></svg>
       </a>
   
-  
-  
-      <a href="#">
-          <svg aria-label="Notifications" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Notifications</title><path d="M16.792 3.904A4.989 4.989 0 0 1 21.5 9.122c0 3.072-2.652 4.959-5.197 7.222-2.512 2.243-3.865 3.469-4.303 3.752-.477-.309-2.143-1.823-4.303-3.752C5.141 14.072 2.5 12.167 2.5 9.122a4.989 4.989 0 0 1 4.708-5.218 4.21 4.21 0 0 1 3.675 1.941c.84 1.175.98 1.763 1.12 1.763s.278-.588 1.11-1.766a4.17 4.17 0 0 1 3.679-1.938m0-2a6.04 6.04 0 0 0-4.797 2.127 6.052 6.052 0 0 0-4.787-2.127A6.985 6.985 0 0 0 .5 9.122c0 3.61 2.55 5.827 5.015 7.97.283.246.569.494.853.747l1.027.918a44.998 44.998 0 0 0 3.518 3.018 2 2 0 0 0 2.174 0 45.263 45.263 0 0 0 3.626-3.115l.922-.824c.293-.26.59-.519.885-.774 2.334-2.025 4.98-4.32 4.98-7.94a6.985 6.985 0 0 0-6.708-7.218Z"></path></svg>
-      </a>
-  
+
   
   
       <a href="../main_page/upload.php">
@@ -242,23 +237,23 @@ if (isset($_GET['user'])) {
                     <path d="M14.232 3.656a1.269 1.269 0 0 1-.796-.66L12.93 2h-1.86l-.505.996a1.269 1.269 0 0 1-.796.66m-.001 16.688a1.269 1.269 0 0 1 .796.66l.505.996h1.862l.505-.996a1.269 1.269 0 0 1 .796-.66M3.656 9.768a1.269 1.269 0 0 1-.66.796L2 11.07v1.862l.996.505a1.269 1.269 0 0 1 .66.796m16.688-.001a1.269 1.269 0 0 1 .66-.796L22 12.93v-1.86l-.996-.505a1.269 1.269 0 0 1-.66-.796M7.678 4.522a1.269 1.269 0 0 1-1.03.096l-1.06-.348L4.27 5.587l.348 1.062a1.269 1.269 0 0 1-.096 1.03m11.8 11.799a1.269 1.269 0 0 1 1.03-.096l1.06.348 1.318-1.317-.348-1.062a1.269 1.269 0 0 1 .096-1.03m-14.956.001a1.269 1.269 0 0 1 .096 1.03l-.348 1.06 1.317 1.318 1.062-.348a1.269 1.269 0 0 1 1.03.096m11.799-11.8a1.269 1.269 0 0 1-.096-1.03l.348-1.06-1.317-1.318-1.062.348a1.269 1.269 0 0 1-1.03-.096" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
                 </svg>
             </div>
-            
-            <div id="overlay" class="overlay" onclick="hidePopup()"></div>
-            
-            <div id="popup" class="popup" onclick="hidePopup()">
-                <div class="popup-content">
-                    <ul class="menu-list">
-                      <li class="menu-item"><a href="#">Apps and Websites</a></li>
-                      <li class="menu-item"><a href="#">QR Code</a></li>
-                      <li class="menu-item"><a href="#">Notifications</a></li>
-                      <li class="menu-item"><a href="#">Settings and privacy</a></li>
-                      <li class="menu-item"><a href="#">Meta Verified</a></li>
-                      <li class="menu-item"><a href="#">Supervision</a></li>
-                      <li class="menu-item"><a href="#">Log Out</a></li>
-                      <li class="menu-item" id="cancelButton"><a href="main.html">Cancel</a></li>                    
-                    </ul>
+
+                <div id="overlay" class="overlay" onclick="returnToHomePage()"></div>
+
+                <div id="popup" class="popup" onclick="hidePopup()">
+                    <div class="popup-content">
+                        <ul class="menu-list">
+                            <li class="menu-item"><a href="#">Apps and Websites</a></li>
+                            <li class="menu-item"><a href="#">QR Code</a></li>
+                            <li class="menu-item"><a href="#">Notifications</a></li>
+                            <li class="menu-item"><a href="#">Settings and privacy</a></li>
+                            <li class="menu-item"><a href="#">Meta Verified</a></li>
+                            <li class="menu-item"><a href="#">Supervision</a></li>
+                            <li class="menu-item"><a href="#">Log Out</a></li>
+                            <li class="menu-item" id="cancelButton"><a href="#" onclick="returnToHomePage()">Cancel</a></li>
+                        </ul>
+                    </div>
                 </div>
-              </div>
             </div>
           
           <div class="desktop-only">
@@ -328,48 +323,56 @@ if (isset($_GET['user'])) {
 
 
 
+
       <div class="desktop-only">
-        <div class="tabs">
-          <div class="tab-item active" style="margin-right: 60px;">
-            <svg
-              aria-label="Posts"
-              class="_8-yf5"
-              fill="#262626"
-              height="12"
-              viewBox="0 0 48 48"
-              width="12"
-            >
-              <path
-                clip-rule="evenodd"
-                d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z"
-                fill-rule="evenodd"
-              ></path>
-            </svg>
-            <span>POSTS</span>
+          <div class="tabs">
+              <div class="tab-item active" style="margin-right: 60px;">
+                  <a href="profile.php?user=<?php echo $currenUser?>">
+                      <svg
+                              aria-label="Posts"
+                              class="_8-yf5"
+                              fill="#262626"
+                              height="12"
+                              viewBox="0 0 48 48"
+                              width="12"
+                      >
+                          <path
+                                  clip-rule="evenodd"
+                                  d="M45 1.5H3c-.8 0-1.5.7-1.5 1.5v42c0 .8.7 1.5 1.5 1.5h42c.8 0 1.5-.7 1.5-1.5V3c0-.8-.7-1.5-1.5-1.5zm-40.5 3h11v11h-11v-11zm0 14h11v11h-11v-11zm11 25h-11v-11h11v11zm14 0h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11zm14 28h-11v-11h11v11zm0-14h-11v-11h11v11zm0-14h-11v-11h11v11z"
+                                  fill-rule="evenodd"
+                          ></path>
+                      </svg>
+                      <span>POSTS</span>
+                  </a>
+              </div>
+              <div class="tab-item" style="margin-right: 60px;">
+                  <a href="saved.php?user=<?php echo $currenUser?>">
+                      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="12" height="12" viewBox="0 0 24 24" fill="#808080">
+                          <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z"></path>
+                      </svg>
+                      <span>SAVED</span>
+                  </a>
+              </div>
+              <div class="tab-item">
+                  <a href="tagged.php?user=<?php echo $currenUser?>"">
+                  <svg
+                          aria-label="Tagged"
+                          class="_8-yf5"
+                          fill="#8e8e8e"
+                          height="12"
+                          viewBox="0 0 48 48"
+                          width="12"
+                  >
+                      <path
+                              d="M41.5 5.5H30.4c-.5 0-1-.2-1.4-.6l-4-4c-.6-.6-1.5-.6-2.1 0l-4 4c-.4.4-.9.6-1.4.6h-11c-3.3 0-6 2.7-6 6v30c0 3.3 2.7 6 6 6h35c3.3 0 6-2.7 6-6v-30c0-3.3-2.7-6-6-6zm-29.4 39c-.6 0-1.1-.6-1-1.2.7-3.2 3.5-5.6 6.8-5.6h12c3.4 0 6.2 2.4 6.8 5.6.1.6-.4 1.2-1 1.2H12.1zm32.4-3c0 1.7-1.3 3-3 3h-.6c-.5 0-.9-.4-1-.9-.6-5-4.8-8.9-9.9-8.9H18c-5.1 0-9.4 3.9-9.9 8.9-.1.5-.5.9-1 .9h-.6c-1.7 0-3-1.3-3-3v-30c0-1.7 1.3-3 3-3h11.1c1.3 0 2.6-.5 3.5-1.5L24 4.1 26.9 7c.9.9 2.2 1.5 3.5 1.5h11.1c1.7 0 3 1.3 3 3v30zM24 12.5c-5.3 0-9.6 4.3-9.6 9.6s4.3 9.6 9.6 9.6 9.6-4.3 9.6-9.6-4.3-9.6-9.6-9.6zm0 16.1c-3.6 0-6.6-2.9-6.6-6.6 0-3.6 2.9-6.6 6.6-6.6s6.6 2.9 6.6 6.6c0 3.6-3 6.6-6.6 6.6z"
+                      ></path>
+                  </svg>
+                  <span>TAGGED</span>
+                  </a>
+              </div>
           </div>
-          <div class="tab-item" style="margin-right: 60px;">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="12" height="12" viewBox="0 0 24 24" fill="#808080">
-                <path d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z"></path>
-            </svg>
-            <span>Saved</span>
-        </div>
-          <div class="tab-item">
-            <svg
-              aria-label="Tagged"
-              class="_8-yf5"
-              fill="#8e8e8e"
-              height="12"
-              viewBox="0 0 48 48"
-              width="12"
-            >
-              <path
-                d="M41.5 5.5H30.4c-.5 0-1-.2-1.4-.6l-4-4c-.6-.6-1.5-.6-2.1 0l-4 4c-.4.4-.9.6-1.4.6h-11c-3.3 0-6 2.7-6 6v30c0 3.3 2.7 6 6 6h35c3.3 0 6-2.7 6-6v-30c0-3.3-2.7-6-6-6zm-29.4 39c-.6 0-1.1-.6-1-1.2.7-3.2 3.5-5.6 6.8-5.6h12c3.4 0 6.2 2.4 6.8 5.6.1.6-.4 1.2-1 1.2H12.1zm32.4-3c0 1.7-1.3 3-3 3h-.6c-.5 0-.9-.4-1-.9-.6-5-4.8-8.9-9.9-8.9H18c-5.1 0-9.4 3.9-9.9 8.9-.1.5-.5.9-1 .9h-.6c-1.7 0-3-1.3-3-3v-30c0-1.7 1.3-3 3-3h11.1c1.3 0 2.6-.5 3.5-1.5L24 4.1 26.9 7c.9.9 2.2 1.5 3.5 1.5h11.1c1.7 0 3 1.3 3 3v30zM24 12.5c-5.3 0-9.6 4.3-9.6 9.6s4.3 9.6 9.6 9.6 9.6-4.3 9.6-9.6-4.3-9.6-9.6-9.6zm0 16.1c-3.6 0-6.6-2.9-6.6-6.6 0-3.6 2.9-6.6 6.6-6.6s6.6 2.9 6.6 6.6c0 3.6-3 6.6-6.6 6.6z"
-              ></path>
-            </svg>
-            <span>TAGGED</span>
-          </div>
-        </div>
       </div>
+
 
 
 
@@ -416,7 +419,60 @@ if (isset($_GET['user'])) {
         </div>
     </footer>
     </main>
-    <script>// Assuming you have some code to handle the click event on the Follow button
+    <script>
+
+        function returnToHomePage() {
+            var popup = document.getElementById("popup");
+
+            if (popup.style.display === 'block') {
+                // Если всплывающее окно открыто, скрываем его
+                hidePopup();
+            } else {
+                // Если всплывающее окно не открыто, возвращаемся на текущую страницу
+                window.location.href = window.location.href;
+            }
+        }
+
+        function showPopup() {
+            var overlay = document.getElementById("overlay");
+            var popup = document.getElementById("popup");
+
+            overlay.style.display = "block";
+            popup.style.display = "block";
+
+            // Добавляем запись в истории браузера при открытии всплывающего окна
+            history.pushState({ isPopupVisible: true }, null);
+
+            setTimeout(function () {
+                overlay.style.opacity = "1";
+                popup.style.opacity = "1";
+            }, 50);
+        }
+
+        function hidePopup() {
+            var overlay = document.getElementById("overlay");
+            var popup = document.getElementById("popup");
+
+            overlay.style.opacity = "0";
+            popup.style.opacity = "0";
+
+            setTimeout(function () {
+                overlay.style.display = "none";
+                popup.style.display = "none";
+            }, 300);
+        }
+
+        // Обрабатываем событие нажатия кнопки "назад"
+        window.onpopstate = function (event) {
+            var popup = document.getElementById("popup");
+
+            if (event.state && event.state.isPopupVisible) {
+                // Если в истории есть запись о видимости всплывающего окна, скрываем его
+                hidePopup();
+            }
+        };
+
+
         function sendAjaxRequest(userIdToFollow, currentUserId) {
             // Create a new XMLHttpRequest object
             var xhr = new XMLHttpRequest();
@@ -501,6 +557,58 @@ if (isset($_GET['user'])) {
             // Call the function to send the AJAX request with the obtained data
             sendAjaxRequest(userIdToFollow, currentUserId);
         });
+
+
+        function returnToHomePage() {
+            var popup = document.getElementById("popup");
+
+            if (popup.style.display === 'block') {
+                // Если всплывающее окно открыто, скрываем его
+                hidePopup();
+            } else {
+                // Если всплывающее окно не открыто, возвращаемся на текущую страницу
+                window.location.href = window.location.href;
+            }
+        }
+
+        function showPopup() {
+            var overlay = document.getElementById("overlay");
+            var popup = document.getElementById("popup");
+
+            overlay.style.display = "block";
+            popup.style.display = "block";
+
+            // Добавляем запись в истории браузера при открытии всплывающего окна
+            history.pushState({ isPopupVisible: true }, null);
+
+            setTimeout(function () {
+                overlay.style.opacity = "1";
+                popup.style.opacity = "1";
+            }, 50);
+        }
+
+        function hidePopup() {
+            var overlay = document.getElementById("overlay");
+            var popup = document.getElementById("popup");
+
+            overlay.style.opacity = "0";
+            popup.style.opacity = "0";
+
+            setTimeout(function () {
+                overlay.style.display = "none";
+                popup.style.display = "none";
+            }, 300);
+        }
+
+        // Обрабатываем событие нажатия кнопки "назад"
+        window.onpopstate = function (event) {
+            var popup = document.getElementById("popup");
+
+            if (event.state && event.state.isPopupVisible) {
+                // Если в истории есть запись о видимости всплывающего окна, скрываем его
+                hidePopup();
+            }
+        };
     </script>
 
   </body>
