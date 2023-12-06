@@ -70,13 +70,13 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="../explore-recomendations/explore-main.html">
+    <a href="../explore-recomendations/explore-main.php">
         <svg aria-label="Explore" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Explore</title><polygon fill="none" points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon><polygon fill-rule="evenodd" points="10.06 10.056 13.949 13.945 7.581 16.424 10.06 10.056"></polygon><circle cx="12.001" cy="12.005" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle></svg>
     </a>
 
 
 
-    <a href="../reels/reels.html" >
+    <a href="../reels/reels.php" >
         <svg
                 width="24"
                 height="24"
@@ -117,7 +117,7 @@ if(!isset($_SESSION["login"])) {
 
 
 
-    <a href="../direct/direct.html">
+    <a href="../direct/direct.php">
         <svg aria-label="Messenger" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Messenger</title><path d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.739"></path><path d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z" fill-rule="evenodd"></path></svg>
     </a>
 
@@ -257,7 +257,6 @@ if(!isset($_SESSION["login"])) {
                                     <a>
                                             <button class="like-button" data-post-id="<?php echo $postId; ?>" data-liked="<?php echo $userLiked ? 'true' : 'false'; ?>" onclick="likePost(this)">
                                                 <?php if ($userLiked) : ?>
-                                                    <!-- Display Unlike icon when liked -->
                                                     <svg aria-label="Unlike" class="x1lliihq x1n2onr6 xxk16z8" fill="red" height="24" role="img" viewBox="0 0 48 48" width="24">
                                                         <title>Unlike</title>
                                                         <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
@@ -618,5 +617,3 @@ if(!isset($_SESSION["login"])) {
 
 </body>
 </html>
-
->

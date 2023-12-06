@@ -110,7 +110,7 @@ if (isset($_GET['user'])) {
         </a>
 
 
-        <a href="../explore-recomendations/explore-main.html">
+        <a href="../explore-recomendations/explore-main.php">
             <svg aria-label="Explore" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24"
                  role="img" viewBox="0 0 24 24" width="24"><title>Explore</title>
                 <polygon fill="none" points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953"
@@ -123,7 +123,7 @@ if (isset($_GET['user'])) {
         </a>
 
 
-        <a href="../reels/reels.html">
+        <a href="../reels/reels.php">
             <svg
                     width="24"
                     height="24"

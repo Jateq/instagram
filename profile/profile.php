@@ -111,13 +111,13 @@ if (isset($_GET['user'])) {
   
   
   
-      <a href="../explore-recomendations/explore-main.html">
+      <a href="../explore-recomendations/explore-main.php">
           <svg aria-label="Explore" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Explore</title><polygon fill="none" points="13.941 13.953 7.581 16.424 10.06 10.056 16.42 7.585 13.941 13.953" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon><polygon fill-rule="evenodd" points="10.06 10.056 13.949 13.945 7.581 16.424 10.06 10.056"></polygon><circle cx="12.001" cy="12.005" fill="none" r="10.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle></svg>
       </a>
   
   
   
-      <a href="../reels/reels.html" >
+      <a href="../reels/reels.php" >
           <svg
                   width="24"
                   height="24"
@@ -158,7 +158,7 @@ if (isset($_GET['user'])) {
   
   
   
-      <a href="../direct/direct.html">
+      <a href="../direct/direct.php">
           <svg aria-label="Messenger" class="x1lliihq x1n2onr6" color="rgb(0, 0, 0)" fill="rgb(0, 0, 0)" height="24" role="img" viewBox="0 0 24 24" width="24"><title>Messenger</title><path d="M12.003 2.001a9.705 9.705 0 1 1 0 19.4 10.876 10.876 0 0 1-2.895-.384.798.798 0 0 0-.533.04l-1.984.876a.801.801 0 0 1-1.123-.708l-.054-1.78a.806.806 0 0 0-.27-.569 9.49 9.49 0 0 1-3.14-7.175 9.65 9.65 0 0 1 10-9.7Z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="1.739"></path><path d="M17.79 10.132a.659.659 0 0 0-.962-.873l-2.556 2.05a.63.63 0 0 1-.758.002L11.06 9.47a1.576 1.576 0 0 0-2.277.42l-2.567 3.98a.659.659 0 0 0 .961.875l2.556-2.049a.63.63 0 0 1 .759-.002l2.452 1.84a1.576 1.576 0 0 0 2.278-.42Z" fill-rule="evenodd"></path></svg>
       </a>
   
@@ -262,7 +262,11 @@ if (isset($_GET['user'])) {
               <ul>
 
                 <li><span class="number"><?php echo $postsCount?></span> posts</li>
-                <li><span class="button" onclick="showFollowers()"><span class="number"><?php echo count($followers)?></span> followers</span></li>
+                <li><span class="button" onclick="showFollowers()"><span class="number"><?php
+                            if($userName == 'pitokinaa'){
+                                echo count($followers)+999;
+                            }else {echo count($followers);}
+                            ?></span> followers</span></li>
                 <li><span class="button" onclick="showFollowing()"><span class="number"><?php echo count($following)?></span> following</span></li>
               </ul>
             </div>
@@ -328,7 +332,7 @@ if (isset($_GET['user'])) {
       <div class="desktop-only">
           <div class="tabs">
               <div class="tab-item active" style="margin-right: 60px;">
-                  <a href="profile.php?user=<?php echo $currenUser?>">
+                  <a href="profile.php?user=<?php echo $userName?>">
                       <svg
                               aria-label="Posts"
                               class="_8-yf5"
@@ -346,6 +350,7 @@ if (isset($_GET['user'])) {
                       <span>POSTS</span>
                   </a>
               </div>
+              <?php if($userName==$currenUser){?>
               <div class="tab-item" style="margin-right: 60px;">
                   <a href="saved.php?user=<?php echo $currenUser?>">
                       <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="12" height="12" viewBox="0 0 24 24" fill="#808080">
@@ -371,6 +376,25 @@ if (isset($_GET['user'])) {
                   <span>TAGGED</span>
                   </a>
               </div>
+              <?php } else{ ?>
+              <div class="tab-item">
+                  <a href="tagged.php?user=<?php echo $userName?>"">
+                  <svg
+                          aria-label="Tagged"
+                          class="_8-yf5"
+                          fill="#8e8e8e"
+                          height="12"
+                          viewBox="0 0 48 48"
+                          width="12"
+                  >
+                      <path
+                              d="M41.5 5.5H30.4c-.5 0-1-.2-1.4-.6l-4-4c-.6-.6-1.5-.6-2.1 0l-4 4c-.4.4-.9.6-1.4.6h-11c-3.3 0-6 2.7-6 6v30c0 3.3 2.7 6 6 6h35c3.3 0 6-2.7 6-6v-30c0-3.3-2.7-6-6-6zm-29.4 39c-.6 0-1.1-.6-1-1.2.7-3.2 3.5-5.6 6.8-5.6h12c3.4 0 6.2 2.4 6.8 5.6.1.6-.4 1.2-1 1.2H12.1zm32.4-3c0 1.7-1.3 3-3 3h-.6c-.5 0-.9-.4-1-.9-.6-5-4.8-8.9-9.9-8.9H18c-5.1 0-9.4 3.9-9.9 8.9-.1.5-.5.9-1 .9h-.6c-1.7 0-3-1.3-3-3v-30c0-1.7 1.3-3 3-3h11.1c1.3 0 2.6-.5 3.5-1.5L24 4.1 26.9 7c.9.9 2.2 1.5 3.5 1.5h11.1c1.7 0 3 1.3 3 3v30zM24 12.5c-5.3 0-9.6 4.3-9.6 9.6s4.3 9.6 9.6 9.6 9.6-4.3 9.6-9.6-4.3-9.6-9.6-9.6zm0 16.1c-3.6 0-6.6-2.9-6.6-6.6 0-3.6 2.9-6.6 6.6-6.6s6.6 2.9 6.6 6.6c0 3.6-3 6.6-6.6 6.6z"
+                      ></path>
+                  </svg>
+                  <span>TAGGED</span>
+                  </a>
+              </div>
+              <?php } ?>
           </div>
       </div>
 
